@@ -1,0 +1,61 @@
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}" role="alert">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+
+{% extends "index.html" %}
+
+{% block menu %}
+    {% include "menu.html" %}
+{% endblock %}
+
+{% block content %}
+<h1>Bienvenido Asistente</h1>
+
+<h5>Registrar ingreso  de visitantes</h5>
+  
+<form method="POST" action="/registrarEntrada" enctype="multipart/form-data" class="was-validated">
+  <label>nombre del visitante:</label><br>
+  <input type="text" name="nombre" required><br><br>
+
+  <label>Correo:</label><br>
+  <input type="text" name="correo" required><br><br>
+
+  <label>oficina :</label><br>
+  <select name="oficina" id="">
+      <option value="">Seleccione una oficina</option>
+      {% for oficina in oficinas %}
+          <option value="{{ oficina.id }}">{{ oficina.nombre }}</option>
+      {% endfor %}
+  </select>
+  <button type="submit" class="btn btn-primary">
+    Guardar
+  </button>
+ 
+</form>
+
+<h5>Registrar  salida de visitantes .</h5>
+<form method="POST" action="/registrarSalida" enctype="multipart/form-data" class="was-validated">
+  <label>nombre del visitante:</label><br>
+  <input type="text" name="nombre" required><br><br>
+
+  <label>Correo:</label><br>
+  <input type="text" name="correo" required><br><br>
+
+  
+  <button type="submit" class="btn btn-primary">
+    Guardar
+  </button>
+ 
+</form>
+{% endblock %}
+
+{% block piePagina %}
+    {% include "piePagina.html" %}
+{% endblock %}

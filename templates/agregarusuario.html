@@ -1,0 +1,51 @@
+{% extends "index.html" %}
+
+{% block menu %}
+    {% include "menu.html" %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="container mt-5"> 
+        <form  method="POST" action="/agregarUsuario" enctype="multipart/form-data" class="was-validated">
+            <h3>Agregar usuario</h3>
+            <div class="mb-3">
+                <label class="form-label">Nombre Usuario:</label>
+                <input type="text" class="form-control" name="nombre" id="txtNombre" required>
+            </div>
+            <div>
+                <label class="form-label">correo:</label>
+                <input type="text" class="form-control" name="correo" id="txtDescripcion" required>
+            </div>
+            <div>
+                <label class="form-label">Oficina:</label>
+                <select name="oficina" class="form-select mt-4" id="">
+                    <option value="">Seleccione una oficina</option>
+                    {% for oficina in oficinas %}
+                        <option value="{{ oficina.nombre }}">{{ oficina.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <select name="tipo" class="form-select mt-4" id="">
+                    <option value="">Seleccione un tipo</option>
+                    <option value="Asistente">Asistente</option>
+                    <option value="Administrador">Administrador</option>
+                    
+                </select>
+            </div>
+
+           
+            <button type="submit" class="btn btn-primary">
+                Guardar
+            </button>
+            <a href="/">
+                <button type="button" class="btn btn-danger">Cancelar</button>
+            </a>
+        </form>
+    </div>
+{% endblock %}
+
+{% block piePagina %}
+    {% include "piePagina.html" %}
+{% endblock %}
