@@ -42,6 +42,8 @@ def agregarUsuario():
         if not all([nombre, correo, oficina, tipo]):
             return jsonify({"error": "Faltan campos obligatorios"}), 400
         
+        
+        
         #generar contraseña aleatoria
         password = ''.join(random.choices(string.ascii_letters + string.digits, k=8))
         data["usuario"] = correo # guardar el correo como usuario

@@ -47,7 +47,12 @@
 
   <label>Correo:</label><br>
   <input type="text" name="correo" required><br><br>
-
+  <select name="oficina" id="">
+    <option value="">Seleccione una oficina</option>
+    {% for oficina in oficinas %}
+        <option value="{{ oficina.id }}">{{ oficina.nombre }}</option>
+    {% endfor %}
+  </select>
   
   <button type="submit" class="btn btn-primary">
     Guardar

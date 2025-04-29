@@ -8,7 +8,7 @@
 
     <div class="container mt-5"> 
         <form  method="POST" action="/agregarUsuario" enctype="multipart/form-data" class="was-validated">
-            <h3>Agregar usuario</h3>
+            <h3><strong>usuario</strong> usuario</h3>
             <div class="mb-3">
                 <label class="form-label">Nombre Usuario:</label>
                 <input type="text" class="form-control" name="nombre" id="txtNombre" required>
@@ -22,7 +22,7 @@
                 <select name="oficina" class="form-select mt-4" id="">
                     <option value="">Seleccione una oficina</option>
                     {% for oficina in oficinas %}
-                        <option value="{{ oficina.nombre }}">{{ oficina.nombre }}</option>
+                        <option value="{{ oficina.id }}">{{ oficina.nombre }}</option>
                     {% endfor %}
                 </select>
             </div>
