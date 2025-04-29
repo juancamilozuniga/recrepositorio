@@ -9,21 +9,20 @@ import os
 from dotenv import load_dotenv
 
 
-# uri2 = "mongodb+srv://camilo2083:juanca95@cluster0.5b4pn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-uriLocal = "mongodb://localhost:27017/visitantesbd"
 app = Flask(__name__)
 
 CORS(app, resources={r"/*": {"origins": "*"}})  # permite todas las rutas desde cualquier origen
 
 uri3 = os.environ.get("MONGO_URI")
+secreto = os.environ.get("SECRET_KEY")
+app.secret_key = secreto
 
-app.secret_key = "mi_super_secreto_seguro_12354"
 
 
 app.config['MONGODB_SETTINGS'] = [{
     "db": "visitantesbd",
     "host": uri3,
-    #"port": 27017
+
 }]
 
 app.config['CORS_HEADERS'] = 'Content-Type'
